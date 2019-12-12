@@ -1,5 +1,4 @@
 import React from 'react';
-import Home from './containers/Home';
 import Routes from './Routes';
 
 function App() {

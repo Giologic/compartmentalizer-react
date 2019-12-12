@@ -15,6 +15,8 @@ const Login = (props) => {
   const submitLogin = async () => {
     await authAPI.login(values).then( response => {
       LocalStorageService.setToken(response.data)
+      console.log(LocalStorageService.getAccessToken())
+      console.log(LocalStorageService.getRefreshToken())
       if(isLoggedIn()) {
         props.history.push("/components")
       }

@@ -1,5 +1,4 @@
 import instance from './Base'
-import LocalStorageService from './LocalStorageService'
 
 const login = ({username, password}) => {
   return instance({

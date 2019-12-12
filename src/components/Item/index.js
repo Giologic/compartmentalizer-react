@@ -1,8 +1,8 @@
 import React from 'react'
-
+import './index.css'
 const Item = (props) => {
 
-  const {name, price} = props
+  const {name, price, link} = props
   return (
     <div class="box">
       <article class="media">
@@ -11,7 +11,18 @@ const Item = (props) => {
             <p>
               <strong>{ name }</strong>
               <br />
-              Price: <span className="tag">{price}</span>
+              Price: ₱ {price}
+              <div className="tag-group">
+                <div class="field is-grouped is-grouped-multiline">
+                  <div class="control">
+                    <a class="tag">Resistors</a>
+                  </div>
+
+                  <div class="control">
+                    <a class="tag">LEDs and Lighting</a>
+                  </div>
+                </div>
+              </div>
             </p>
           </div>
           <nav class="level is-mobile">

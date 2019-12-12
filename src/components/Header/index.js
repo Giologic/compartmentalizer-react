@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import isLoggedIn from '../../utils/isLoggedIn'
+import './index.css'
 import { baseUrl } from '../../config/baseConfig'
 import LocalStorageService from '../../api/LocalStorageService'
 
@@ -24,17 +25,30 @@ const Header = (props) => {
   
 
   return (
-    <nav className="navbar">
+    <nav className="navbar custom-navbar">
       <div className="navbar-menu">
         <div className="navbar-brand">
           <div className="navbar-item">
             <Link to='/index' class="">
-              <h1 className="title">
+              <h3 className="title">
                 Compartmentalizer
-              </h1>
+              </h3>
             </Link>
           </div>
         </div>
+        { isAuthenticated ? (
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <Link to='/components' className='navbar-item'>
+                Components
+              </Link>
+              <Link to='/products' className='navbar-item'>
+                Products
+              </Link>
+            </div>
+          </div>
+        ) : null }
+        
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">

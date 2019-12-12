@@ -27,13 +27,14 @@ axios.interceptors.response.use((response) => {
   const originalRequest = error.config;
   if(error.response.status === 401 && !originalRequest._retry) {
     originalRequest._retry = true;
-    return axios.post('/auth/token/refresh', 
+    console.log("Refresh Token => ", localStorage.getItem('refresh'))
+    return axios.post('/auth/token/refresh/', 
     {
       "refresh": LocalStorageService.getRefreshToken()
     })
     .then(res => {
-      if(res.status === 201) {
-        LocalStorageService.setToken(res.data);
+      if(res.status === 200) {
+        LocalStorageService.refreshToken(res.data)
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + LocalStorageService.getAccessToken();
         return axios(originalRequest);
       }
